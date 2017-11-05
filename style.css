@@ -1,16 +1,22 @@
 .Digital-clock{
-	width:400px;
+	width:200px;
 	height:100px;
 	margin:auto;
-	position: absolute;
+	position:all;
 	top:50%;left:50%;
-	transform: translateX(-50%);
-	transform: translateY(-50%);
 	color: #fff;
-	font-size: 90px;
+	font-size: 20px;
+	padding: 0px, 5px, 0px, 5px;
+	border:0px solid #ccc;
 
 }
 
 body{
 	background-image:url(black_background.jpg);
+}
+#date {
+    letter-spacing:10px;
+    font-size:14px;
+    font-family:arial,sans-serif;
+    color:#fff;
 }
