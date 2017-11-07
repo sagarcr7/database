@@ -2,16 +2,41 @@
 <html>
 <head>
 	<title>
-		Digital-clock
+		Date and clock
 	</title>
 	<link rel="stylesheet" href="style.css" type="text/css"/>
-
+	<script type="text/javascript" src="analogtime.js"></script>
 </head>
 <body>
-	<div id="digitalclock" class="Digital-clock"></div>
-	<div id="date"></div>
+	<div class="analog-clock">
+            <svg width="140" height="140">
+                <circle id="clock-face" cx="70" cy="70" r="65" />
+                <line id="h-hand" x1="70" y1="70" x2="70" y2="38" />
+                <line id="m-hand" x1="70" y1="70" x2="70" y2="20" />
+                <line id="s-hand" x1="70" y1="70" x2="70" y2="12" />
+                <line id="s-tail" x1="70" y1="70" x2="70" y2="56" />
+                <text x="97" y="26">1</text>
+                <text x="117" y ="49">2</text>
+                <text x="126" y="76">3</text>
+                <text x="118" y="101">4</text>
+                <text x="98" y ="123">5</text>
+                <text x="66" y="130">6</text>
+                <text x="39" y="125">7</text>
+                <text x="17" y="108">8</text>
+                <text x="7" y="76">9</text>
+                <text x="12" y="50">10</text>
+                <text x="32" y="27">11</text>
+                <text x="62" y="18">12</text>
+             </svg>
+        </div>
+	<div id="digitalclock" class="Digital-clock">
+		<div id="clock"></div>
+		<div id="date"></div>
+		
+	</div>
+	 
 	<script type="text/javascript">
-	function show_time() {
+		function show_time() {
 			var curtime=new Date();
 			var date= curtime.getDate();
 			var h= curtime.getHours();
@@ -19,41 +44,37 @@
 			var s= curtime.getSeconds();
 			var format="AM";
 
-		if(h>12){
-		h=h-12;
-		format="PM"
-		}
-		if(h<10){
-			h = "0"+ h
-		}
-		if(m<10){
-			m = "0"+ m
-		}
-		if (s<10){
-			s= "0"+ s
-		}
-		if (h===0){
-			h=12;
-		}
-		var time = h +":"+m +":"+ s + " " + format;
-		document.getElementById("digitalclock").innerText= time;
-		document.getElementById("digitalclock").textContent= time;
+			if(h>12){
+				h=h-12;
+				format="PM"
+			}
+			if(h<10){
+				h = "0"+ h
+			}
+			if(m<10){
+				m = "0"+ m
+			}
+			if (s<10){
+				s= "0"+ s
+			}
+			if (h===0){
+				h=12;
+			}
+			var time = h +":"+m +":"+ s + " " + format;
+				document.getElementById("clock").innerText= time;
+				document.getElementById("clock").textContent= time;
+				var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    			var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    			var curWeekDay = days[curtime.getDay()];
+		   		var curDay = curtime.getDate();
+		   	 	var curMonth = months[curtime.getMonth()];
+		    	var curYear = curtime.getFullYear();
+		    	var curdate= curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
+		    	document.getElementById("date").innerHTML = curdate;
+	
 	}
-
-	function datefinder(){
-	var mtharr=["jan","feb","mar","apr","may","june","july","aug","sep","oct","nov","dec"];
-		var dayarr["sun","mon","tue","wed","thu","fri","sat"];
-		var curWeekDay = days[today.getDay()];
-		var curDay = today.getDate();
-		var curMonth = months[today.getMonth()];
-		var curYear = today.getFullYear();
-		var curdate = curWeekDay+", "+curDay+" "+curMonth+" "+curYear;
-		document.getElementById("date").innertext = curdate;
-		document.getElementById("date").textcontent= curdate;
-	}
-show_time();
-datefinder();
-setInterval(show_time, 1000);
+		show_time();
+		setInterval(show_time, 1000);
 	</script>
 </body>
 </html>
